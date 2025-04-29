@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: aliceblue;">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init('uiEqw1amFnik6DRhf');
+        })();
+    </script>
+
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="avatar-container">
+                <img id="avatarPreview" src="./assets/avatar.jpg" alt="Avatar" class="avatar" />
+            </div>
+
+            <div class="descripcion">
+                <h2>Descripción del CV</h2>
+                <p>Estudiante de Desarrollo de Software con sólidos conocimientos en programación, bases de datos y
+                    análisis de requerimientos. Entusiasta del aprendizaje constante y la mejora continua, con
+                    habilidades para trabajar en equipo y adaptarme a nuevos retos tecnológicos. Busco oportunidades
+                    para aplicar y fortalecer mis competencias en proyectos reales.
+                </p>
+            </div>
+
+            <div class="contacto">
+                <p>manuel.rendon01@gmail.com</p>
+            </div>
+
+            <div class="links">
+                <a href="education.html" class="link-card">Educación</a>
+                <a href="experience.html" class="link-card">Experiencia</a>
+            </div>
+            <div class="formulario-contacto">
+                <h2>Contáctame</h2>
+                <form id="contactForm">
+                    <input type="text" id="nombre" placeholder="Tu Nombre" required />
+                    <input type="email" id="email" placeholder="Tu Correo" required />
+                    <input type="text" id="asunto" placeholder="Asunto" required />
+                    <textarea id="mensaje" placeholder="Tu Mensaje" required></textarea>
+                    <button type="submit">Enviar</button>
+                    <img src="./assets/hablando.png" alt="Imagen de contacto" class="formulario-img" />
+
+                </form>
+            </div>
+            <button id="downloadBtn" class="link-card">Descargar CV en PDF</button>
+        </div>
+    </section>
+</body>
+
+</html>
