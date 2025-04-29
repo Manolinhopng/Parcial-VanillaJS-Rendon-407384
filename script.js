@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (downloadBtn) {
         downloadBtn.addEventListener("click", function () {
-            alert("¡Botón clickeado!"); // Prueba simple
-            console.log("¡Botón clickeado!");
+            downloadBtn.disabled = true;
+            const originalText = downloadBtn.textContent;
+            downloadBtn.textContent = "Descargando...";
+
             const element = cvContent;
             const opt = {
                 margin: 0.5,
@@ -20,10 +22,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
             };
-            html2pdf().set(opt).from(element).save();
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                downloadBtn.textContent = "Espera 5s...";
+
+                let cooldown = 5;
+                const interval = setInterval(() => {
+                    cooldown--;
+                    if (cooldown > 0) {
+                        downloadBtn.textContent = `Espera ${cooldown}s...`;
+                    } else {
+                        clearInterval(interval);
+                        downloadBtn.disabled = false;
+                        downloadBtn.textContent = originalText;
+                    }
+                }, 1000);
+            }).catch(() => {
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = originalText;
+                alert("Hubo un error al generar el PDF.");
+            });
         });
     }
 });
+
 
 
 const contactForm = document.getElementById("contactForm");
@@ -50,7 +72,7 @@ if (contactForm && submitButton && formStatus) {
                 console.log('ÉXITO!', response.status, response.text);
                 formStatus.textContent = "¡Mensaje enviado correctamente!";
                 formStatus.classList.add('success');
-                contactForm.reset(); // Limpiar formulario
+                contactForm.reset(); 
             }, function (error) {
                 console.error('FALLO...', error);
                 formStatus.textContent = "Error al enviar. Intenta de nuevo.";
