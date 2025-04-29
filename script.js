@@ -4,36 +4,27 @@ const EMAILJS_PUBLIC_KEY = 'uiEqw1amFnik6DRhf';
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
-const downloadBtn = document.getElementById("downloadBtn");
-const cvContent = document.getElementById("cvContent");
+document.addEventListener("DOMContentLoaded", function () {
+    const downloadBtn = document.getElementById("downloadBtn");
+    const cvContent = document.getElementById("cvContent");
 
-if (downloadBtn && cvContent) {
-    downloadBtn.addEventListener("click", function () {
-        console.log("Generando PDF del elemento:", cvContent);
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", function () {
+            alert("¡Botón clickeado!"); // Prueba simple
+            console.log("¡Botón clickeado!");
+            const element = cvContent;
+            const opt = {
+                margin: 0.5,
+                filename: "mi_cv.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+            };
+            html2pdf().set(opt).from(element).save();
+        });
+    }
+});
 
-        const opt = {
-            margin:       [0.5, 0.5, 0.5, 0.5], 
-            filename:     'CV_Manuel_Rendon.pdf', 
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  {
-                scale: 2, //
-                useCORS: true, 
-                logging: true
-            },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(cvContent).save()
-            .then(() => {
-                console.log("PDF generado exitosamente.");
-            })
-            .catch(err => {
-                console.error("Error al generar el PDF:", err);
-            });
-    });
-} else {
-    if (!downloadBtn) console.error("Elemento con ID 'downloadBtn' no encontrado.");
-    if (!cvContent) console.error("Elemento con ID 'cvContent' no encontrado.");
-}
 
 const contactForm = document.getElementById("contactForm");
 const submitButton = document.getElementById("submitBtn"); 

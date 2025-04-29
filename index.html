@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV - Manuel Rendón</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
-    <script src="script.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./script.js" defer></script>
 </head>
+
 <body>
-    <main class="cv-container" id="cvContent"> <article class="card">
+    <main class="cv-container" id="cvContent">
+        <article class="card">
             <div class="avatar-container">
-                <img id="avatarPreview" src="./assets/avatar.jpg" alt="Foto de perfil de Manuel Rendón" class="avatar" />
+                <img id="avatarPreview" src="./assets/avatar.jpg" alt="Foto de perfil de Manuel Rendón"
+                    class="avatar" />
             </div>
 
-            <section class="descripcion"> <h2>Descripción Profesional</h2>
+            <section class="descripcion">
+                <h2>Descripción Profesional</h2>
                 <p>Estudiante de Desarrollo de Software con sólidos conocimientos en programación, bases de datos y
                     análisis de requerimientos. Entusiasta del aprendizaje constante y la mejora continua, con
                     habilidades para trabajar en equipo y adaptarme a nuevos retos tecnológicos. Busco oportunidades
@@ -28,16 +34,18 @@
                 <p>Telfono: 3174171291</p>
             </section>
 
-            <nav class="links"> <h2>Secciones</h2>
+            <nav class="links">
+                <h2>Secciones</h2>
                 <a href="education.html" class="link-card">Educación</a>
                 <a href="experience.html" class="link-card">Experiencia</a>
                 <a href="talk.html" class="link-card">Hablemos</a>
             </nav>
-             <div class="download-section">
-                <button id="downloadBtn" class="action-button">Descargar CV en PDF</button>
-             </div>
+            <div class="download-section">
+                <button id="downloadBtn" class="action-button">Descargar CV en PDF</button>  
+            </div>
 
         </article>
     </main>
 </body>
+
 </html>
