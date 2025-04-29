@@ -1,0 +1,139 @@
+#cvContent {
+    height: auto;
+}
+
+.card {
+    max-width: 500px;
+    margin: 40px auto;
+    background: lightblue;
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-container {
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 40%;
+    object-fit: cover;
+}
+
+.descripcion {
+    margin-bottom: 15px;
+}
+
+.contacto {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* --- */
+
+.link-card {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px 20px;
+    background: lightcyan;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* 
+  .link-card:hover {
+    background: #0056b3;
+  } */
+
+.card ul {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+.formulario-contacto {
+    background: lightblue;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.formulario-contacto h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#contactForm input,
+#contactForm textarea {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: lightcyan;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: #666;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#contactForm textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contactForm button {
+    padding: 10px 20px;
+    background: lightcyan;
+    color: black;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#contactForm button:hover {
+    background: #b2ebf2;
+}
+
+.formulario-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
