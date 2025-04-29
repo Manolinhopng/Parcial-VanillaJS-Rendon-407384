@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         downloadBtn.addEventListener("click", function () {
             const element = document.body;
 
+<<<<<<< HEAD
             html2canvas(element, {
                 scale: 2,
                 useCORS: true
@@ -45,6 +46,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
+=======
+            const opt = {
+                margin: 0.5,
+                filename: "mi_cv.pdf",
+                image: {
+                    type: "jpeg",
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "letter",
+                    orientation: "portrait"
+                },
+            };
+
+            html2pdf().set(opt).from(element).save();
+        });
+    }
+
+>>>>>>> 3d3ea9fdd9a0226c9f198360df5431e2f54c7437
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -78,4 +102,8 @@ if (contactForm) {
             submitButton.textContent = "Enviar";
         });
     });
+<<<<<<< HEAD
 }
+=======
+});
+>>>>>>> 3d3ea9fdd9a0226c9f198360df5431e2f54c7437
