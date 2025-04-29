@@ -1,31 +1,40 @@
-
 /* --- Variables CSS Globales --- */
 :root {
-    --primary-bg-color: #ADD8E6; /* lightblue */
-    --secondary-bg-color: #E0FFFF; /* lightcyan */
-    --secondary-bg-hover: #b2ebf2; /* Hover para lightcyan */
-    --action-bg-color: #28a745; /* Verde para botón acción principal (Descargar) */
+    --primary-bg-color: #ADD8E6;
+    /* lightblue */
+    --secondary-bg-color: #E0FFFF;
+    /* lightcyan */
+    --secondary-bg-hover: #b2ebf2;
+    /* Hover para lightcyan */
+    --action-bg-color: #28a745;
+    /* Verde para botón acción principal (Descargar) */
     --action-bg-hover: #218838;
     --text-color-dark: #333;
-    --text-color-light: black; /* Texto sobre fondos claros (cyan) */
-    --text-color-on-action: white; /* Texto sobre fondo de acción (verde) */
+    --text-color-light: black;
+    /* Texto sobre fondos claros (cyan) */
+    --text-color-on-action: white;
+    /* Texto sobre fondo de acción (verde) */
     --border-color: #ccc;
     --focus-ring-color: #007bff;
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --border-radius-l: 15px; /* Radio grande */
-    --border-radius-m: 8px;  /* Radio mediano */
-    --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Fuente de sistema moderna */
+    --border-radius-l: 15px;
+    /* Radio grande */
+    --border-radius-m: 8px;
+    /* Radio mediano */
+    --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* Fuente de sistema moderna */
 }
 
 /* --- Estilos Base del Body --- */
 body {
-    background-color: #f0f8ff; /* aliceblue */
+    background-color: #f0f8ff;
+    /* aliceblue */
     font-family: var(--font-family-base);
     margin: 0;
     padding: 20px;
     color: var(--text-color-dark);
-    line-height: 1.6; 
-    font-size: 16px; 
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 /* --- Contenedor Principal del CV --- */
@@ -54,7 +63,7 @@ main.cv-container {
     object-fit: cover;
     display: inline-block;
     border: 3px solid var(--secondary-bg-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .descripcion {
@@ -63,8 +72,8 @@ main.cv-container {
 }
 
 .descripcion p {
-    font-size: 1.1rem; 
-    line-height: 1.7;  
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 .descripcion h2,
@@ -86,7 +95,7 @@ main.cv-container {
 /* *** TAMAÑO DE TEXTO AUMENTADO *** */
 .contacto p {
     margin: 8px 0;
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
 }
 
 .contacto a {
@@ -177,8 +186,8 @@ aside.contact-section {
     margin-bottom: 20px;
     font-size: 1.8rem;
     color: var(--text-color-dark);
-    text-align: center; 
-    border-bottom: none; 
+    text-align: center;
+    border-bottom: none;
 }
 
 .formulario-contacto form {
@@ -201,26 +210,26 @@ aside.contact-section {
 .formulario-contacto input,
 .formulario-contacto textarea {
     font-size: 1rem;
-    font-family: var(--font-family-base); 
-    padding: 12px 15px; 
+    font-family: var(--font-family-base);
+    padding: 12px 15px;
     margin-bottom: 15px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-m);
-    background: #fff; 
+    background: #fff;
     color: var(--text-color-dark);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .formulario-contacto input::placeholder,
 .formulario-contacto textarea::placeholder {
-    color: #777; 
+    color: #777;
 }
 
 .formulario-contacto input:focus,
 .formulario-contacto textarea:focus {
     border-color: var(--focus-ring-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 .formulario-contacto textarea {
@@ -230,13 +239,13 @@ aside.contact-section {
 
 .form-footer {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     margin-top: 10px;
 }
 
 /* Estilo específico para el botón submit */
-#submitBtn { 
+#submitBtn {
     padding: 10px 25px;
     background: var(--secondary-bg-color);
     color: var(--text-color-light);
@@ -246,8 +255,8 @@ aside.contact-section {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    width: auto; 
-    align-self: center; 
+    width: auto;
+    align-self: center;
 }
 
 #submitBtn:hover {
@@ -264,14 +273,14 @@ aside.contact-section {
     background-color: #ccc;
     cursor: not-allowed;
     opacity: 0.7;
-    transform: none; 
+    transform: none;
 }
 
 .formulario-img {
-    width: 80px; 
+    width: 80px;
     height: 80px;
     object-fit: contain;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 /* Mensajes de Estado del Formulario */
@@ -282,17 +291,74 @@ aside.contact-section {
     text-align: center;
     font-size: 0.95rem;
 }
+
 .form-status.success {
-    color: #155724; /* Verde oscuro para éxito */
-    background-color: #d4edda; /* Fondo verde claro */
+    color: #155724;
+    /* Verde oscuro para éxito */
+    background-color: #d4edda;
+    /* Fondo verde claro */
     border: 1px solid #c3e6cb;
     padding: 8px 15px;
     border-radius: var(--border-radius-m);
 }
+
 .form-status.error {
-    color: #721c24; /* Rojo oscuro para error */
-    background-color: #f8d7da; /* Fondo rojo claro */
+    color: #721c24;
+    /* Rojo oscuro para error */
+    background-color: #f8d7da;
+    /* Fondo rojo claro */
     border: 1px solid #f5c6cb;
     padding: 8px 15px;
     border-radius: var(--border-radius-m);
+}
+
+/* ============================ */
+/*      RESPONSIVE STYLES      */
+/* ============================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    main.cv-container,
+    aside.contact-section {
+        padding: 20px;
+        margin: 20px auto;
+        width: 100%;
+        border-radius: var(--border-radius-m);
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .descripcion p,
+    .contacto p {
+        font-size: 1rem;
+    }
+
+    .action-button,
+    #submitBtn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .link-card {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .formulario-contacto form {
+        width: 100%;
+    }
+
+    .form-footer {
+        width: 100%;
+    }
 }
