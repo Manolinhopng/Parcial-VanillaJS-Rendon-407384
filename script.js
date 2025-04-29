@@ -1,100 +1,77 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const downloadBtn = document.getElementById("downloadBtn");
+const EMAILJS_SERVICE_ID = 'service_15qo6hl';
+const EMAILJS_TEMPLATE_ID = 'template_4esdx1m';
+const EMAILJS_PUBLIC_KEY = 'uiEqw1amFnik6DRhf';
 
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-            const element = document.body;
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
-            const opt = {
-                margin: 0.5,
-                filename: "mi_cv.pdf",
-                image: {
-                    type: "jpeg",
-                    quality: 0.98
-                },
-                html2canvas: {
-                    scale: 2
-                },
-                jsPDF: {
-                    unit: "in",
-                    format: "letter",
-                    orientation: "portrait"
-                },
-            };
+const downloadBtn = document.getElementById("downloadBtn");
+const cvContent = document.getElementById("cvContent");
 
-            html2pdf().set(opt).from(element).save();
-        });
-    }
+if (downloadBtn && cvContent) {
+    downloadBtn.addEventListener("click", function () {
+        console.log("Generando PDF del elemento:", cvContent);
 
-            html2canvas(element, {
-                scale: 2,
-                useCORS: true
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/jpeg', 1.0);
-
-                const {
-                    jsPDF
-                } = window.jspdf;
-                const pdf = new jsPDF('p', 'pt', 'letter');
-
-                const pageWidth = pdf.internal.pageSize.getWidth();
-                const pageHeight = pdf.internal.pageSize.getHeight();
-
-                const canvasRatio = canvas.width / canvas.height;
-                const pdfRatio = pageWidth / pageHeight;
-
-                let imgWidth, imgHeight;
-
-                if (canvasRatio > pdfRatio) {
-                    imgWidth = pageWidth;
-                    imgHeight = pageWidth / canvasRatio;
-                } else {
-                    imgHeight = pageHeight;
-                    imgWidth = pageHeight * canvasRatio;
-                }
-
-                const x = (pageWidth - imgWidth) / 2;
-                const y = (pageHeight - imgHeight) / 2;
-
-                pdf.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
-                pdf.save('pagina_completa.pdf');
-            }).catch(error => {
-                console.error('Error al capturar la imagen:', error);
+        const opt = {
+            margin:       [0.5, 0.5, 0.5, 0.5], 
+            filename:     'CV_Manuel_Rendon.pdf', 
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  {
+                scale: 2, //
+                useCORS: true, 
+                logging: true
+            },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(cvContent).save()
+            .then(() => {
+                console.log("PDF generado exitosamente.");
+            })
+            .catch(err => {
+                console.error("Error al generar el PDF:", err);
             });
-        });
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+    });
+} else {
+    if (!downloadBtn) console.error("Elemento con ID 'downloadBtn' no encontrado.");
+    if (!cvContent) console.error("Elemento con ID 'cvContent' no encontrado.");
+}
 
-        const submitButton = contactForm.querySelector('button[type="submit"]');
+const contactForm = document.getElementById("contactForm");
+const submitButton = document.getElementById("submitBtn"); 
+const formStatus = document.getElementById("formStatus"); 
+
+if (contactForm && submitButton && formStatus) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault(); 
         submitButton.disabled = true;
         submitButton.textContent = "Enviando...";
-        const nombre = document.getElementById("nombre").value;
-        const email = document.getElementById("email").value;
-        const asunto = document.getElementById("asunto").value;
-        const mensaje = document.getElementById("mensaje").value;
+        formStatus.textContent = ""; 
+        formStatus.className = 'form-status';
 
-        emailjs.send('service_15qo6hl', 'template_4esdx1m', {
-            name: nombre,
-            email_id: email,
-            subject: asunto,
-            message: mensaje
-        }).then(function (response) {
-            alert("¡Mensaje enviado correctamente!");
-            contactForm.reset();
+        const formData = {
+            name: document.getElementById("nombre").value,
+            email_id: document.getElementById("email").value,
+            subject: document.getElementById("asunto").value,
+            message: document.getElementById("mensaje").value
+        };
 
-            setTimeout(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = "Enviar";
-            }, 10000);
-
-        }, function (error) {
-            alert("Error al enviar el mensaje. Intenta de nuevo.");
-            console.error(error);
-
-            submitButton.disabled = false;
-            submitButton.textContent = "Enviar";
-        });
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData)
+            .then(function (response) {
+                console.log('ÉXITO!', response.status, response.text);
+                formStatus.textContent = "¡Mensaje enviado correctamente!";
+                formStatus.classList.add('success');
+                contactForm.reset(); // Limpiar formulario
+            }, function (error) {
+                console.error('FALLO...', error);
+                formStatus.textContent = "Error al enviar. Intenta de nuevo.";
+                 formStatus.classList.add('error');
+            })
+            .finally(() => {
+                 submitButton.disabled = false;
+                 submitButton.textContent = "Enviar";
+            });
     });
-};
+} else {
+     if (!contactForm) console.error("Elemento con ID 'contactForm' no encontrado.");
+     if (!submitButton) console.error("Elemento con ID 'submitBtn' no encontrado.");
+     if (!formStatus) console.error("Elemento con ID 'formStatus' no encontrado.");
+}
